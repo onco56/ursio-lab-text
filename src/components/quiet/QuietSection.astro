@@ -1,0 +1,11 @@
+---
+const { space = "lg" } = Astro.props;
+---
+
+<section class={`q-scroll-soft q-grid-container q-stack-${space}`}>
+  <slot />
+</section>
+
+<style>
+  /* keine lokalen Styles – nutzt Quiet Grid + Quiet Rhythm */
+</style>

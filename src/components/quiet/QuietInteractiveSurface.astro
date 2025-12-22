@@ -1,0 +1,15 @@
+---
+const { motion = "soft" } = Astro.props;
+
+// motion: "soft" | "float" | "none"
+let motionClass =
+  motion === "float"
+    ? "q-hover-float"
+    : motion === "soft"
+    ? "q-hover-soft"
+    : "";
+---
+
+<div class={`q-surface-interactive ${motionClass} q-focus-ring`}>
+  <slot />
+</div>

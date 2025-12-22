@@ -1,24 +1,18 @@
-<section class="cta">
-  <h2>{Astro.props.title}</h2>
-  <p>{Astro.props.text}</p>
+---
+const { title, text } = Astro.props;
+import QuietSurface from "../../components/quiet/QuietSurface.astro";
+import QuietStack from "../../components/quiet/QuietStack.astro";
+import QuietTitle from "../../components/quiet/QuietTitle.astro";
+import QuietText from "../../components/quiet/QuietText.astro";
+---
 
-  <div class="actions">
-    <slot />
-  </div>
-</section>
+<QuietSurface>
+  <QuietStack space="md">
+    <QuietTitle level={2}>{title}</QuietTitle>
+    <QuietText>{text}</QuietText>
 
-<style>
-  .cta {
-    margin-bottom: var(--space-5);
-    padding: var(--space-4) var(--space-3);
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-
-  .actions {
-    margin-top: var(--space-3);
-    display: flex;
-    gap: var(--space-3);
-  }
-</style>
-
+    <QuietStack horizontal space="sm">
+      <slot />
+    </QuietStack>
+  </QuietStack>
+</QuietSurface>

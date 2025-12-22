@@ -1,0 +1,54 @@
+/* --------------------------------------------------------
+   Quiet Interaction System – URSIO Modul 12
+   Interaktive Muster ohne visuelle Entscheidungen
+-------------------------------------------------------- */
+
+/* -------------------------------------------
+   CLICK FEEDBACK
+------------------------------------------- */
+
+.q-click {
+  transition: transform var(--motion-fast) var(--ease-soft);
+}
+
+.q-click:active {
+  transform: scale(0.97);
+}
+
+/* -------------------------------------------
+   KEYBOARD NAVIGATION A11Y
+------------------------------------------- */
+
+.q-keyfocus:focus-visible {
+  outline: 2px solid var(--state-focus-ring);
+  outline-offset: 2px;
+}
+
+/* -------------------------------------------
+   TAP REGION (Mobile)
+------------------------------------------- */
+
+.q-tapzone {
+  position: relative;
+  cursor: pointer;
+}
+
+.q-tapzone:active {
+  opacity: 0.75;
+}
+
+/* -------------------------------------------
+   INTERACTION-SAFE SURFACES
+------------------------------------------- */
+
+.q-interactive-surface {
+  transition:
+    background-color var(--transition-quick),
+    opacity var(--transition-quick),
+    transform var(--transition-quick);
+}
+
+.q-interactive-surface:active {
+  opacity: 0.9;
+  transform: translateY(1px);
+}

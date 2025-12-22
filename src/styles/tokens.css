@@ -18,6 +18,27 @@
   --color-muted-4: #B3ADA3;
 
   /* -------------------------------------------
+     Strukturfarben – Einsatzpunkte
+  ------------------------------------------- */
+  --color-structure-1: var(--color-muted-1);
+  --color-structure-2: var(--color-muted-2);
+
+  /* -------------------------------------------
+     Typografische Marker
+  ------------------------------------------- */
+  --color-type-1: var(--color-muted-3);
+  --color-type-2: var(--color-muted-4);
+
+  /* -------------------------------------------
+     Einsatzpunkte – noch ohne UI-Mapping
+  ------------------------------------------- */
+  --surface-base: var(--color-structure-1);
+  --surface-alt: var(--color-structure-2);
+
+  --text-soft: var(--color-type-1);
+  --text-meta: var(--color-type-2);
+
+  /* -------------------------------------------
      Typografie – URSIO Quiet Typography
   ------------------------------------------- */
   --font-sans: "Inter", system-ui, sans-serif;
@@ -35,16 +56,40 @@
   --text-2xl: 1.75rem;
   --text-3xl: 2.25rem;
 
- /* -------------------------------------------
-   Abstände (Quiet-Spacing Scale v1.5)
-------------------------------------------- */
---space-1: 4px;
---space-2: 6px;
---space-3: 10px;
---space-4: 16px;
---space-5: 26px;
---space-6: 42px;
---space-7: 68px;
+  /* -------------------------------------------
+     Abstände – Quiet-Spacing Scale v1.5 (px-basiert)
+  ------------------------------------------- */
+  --space-1: 4px;
+  --space-2: 6px;
+  --space-3: 10px;
+  --space-4: 16px;
+  --space-5: 26px;
+  --space-6: 42px;
+  --space-7: 68px;
+
+  /* -------------------------------------------
+     Quiet Vertical Rhythm – rem-Tokens
+  ------------------------------------------- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+
+  /* -------------------------------------------
+     Quiet State Tokens – Modul 12
+     (keine UI-Zuweisung, rein systemisch)
+  ------------------------------------------- */
+  --state-hover: var(--color-muted-1);
+  --state-active: var(--color-muted-2);
+  --state-selected: var(--color-muted-3);
+  --state-muted: var(--color-muted-4);
+  --state-disabled: rgba(0, 0, 0, 0.15);
+
+  --state-focus-ring: var(--color-accent-soft);
+
+  --state-surface-hover: var(--color-muted-1);
+  --state-surface-active: var(--color-muted-2);
 
   /* -------------------------------------------
      Layout Tokens

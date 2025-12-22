@@ -1,18 +1,37 @@
-<footer>
-  <nav>
-    <a href="/kontakt/">Kontakt</a>
-    <a href="/rechtliches/">Rechtliches</a>
-    <a href="/impressum/">Impressum</a>
-    <!-- Newsletter kommt später -->
+---
+import QuietNavLink from "./quiet/QuietNavLink.astro";
+---
+
+<footer class="quiet-footer">
+  <nav class="quiet-footer-nav">
+    <QuietNavLink href="/impressum/">Impressum</QuietNavLink>
+    <QuietNavLink href="/kontakt/">Kontakt</QuietNavLink>
+    <QuietNavLink href="/rechtliches/">Rechtliches</QuietNavLink>
   </nav>
+
+  <p class="quiet-footer-copy">
+    © {new Date().getFullYear()} URSIO – Alle Rechte vorbehalten.
+  </p>
+
+  <style>
+    .quiet-footer {
+      width: 100%;
+      padding-block: var(--space-lg);
+      text-align: center;
+      font-family: var(--font-sans);
+      font-size: var(--ui-size);
+      color: var(--color-ink-soft);
+    }
+
+    .quiet-footer-nav {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+
+    .quiet-footer-copy {
+      opacity: 0.7;
+    }
+  </style>
 </footer>
-
-<style>
-  /* Minimalistisch, ohne CI */
-  nav a {
-    margin-right: 1rem;
-    text-decoration: none;
-    color: inherit;
-  }
-</style>
-

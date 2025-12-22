@@ -1,0 +1,36 @@
+---
+/*
+  QuietStack.astro
+  – Universelles vertikales Layout-Modul
+  – Baut rhythmische Abstände zwischen Elementen auf
+  – Props:
+      space: "xs" | "sm" | "md" | "lg" | "xl"
+      as: HTML-Element (default: "div")
+  
+  Beispiel:
+    <QuietStack space="md">
+      <h2>Title</h2>
+      <p>Text…</p>
+    </QuietStack>
+*/
+
+const { space = "md", as = "div" } = Astro.props;
+const Tag = as;
+---
+
+<Tag class={`quiet-stack quiet-stack--${space}`}>
+  <slot />
+</Tag>
+
+<style>
+  .quiet-stack > * + * {
+    margin-top: var(--space-md);
+  }
+
+  /* Dynamische Abstände */
+  .quiet-stack--xs > * + * { margin-top: var(--space-xs); }
+  .quiet-stack--sm > * + * { margin-top: var(--space-sm); }
+  .quiet-stack--md > * + * { margin-top: var(--space-md); }
+  .quiet-stack--lg > * + * { margin-top: var(--space-lg); }
+  .quiet-stack--xl > * + * { margin-top: var(--space-xl); }
+</style>

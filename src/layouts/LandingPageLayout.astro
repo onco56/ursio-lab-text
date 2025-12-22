@@ -1,9 +1,12 @@
-// LandingPageLayout.astro
+---
 import BaseLayout from "./BaseLayout.astro";
+import QuietHero from "../components/quiet/patterns/QuietHero.astro";
 ---
 
 <BaseLayout>
-  <section class="landing-container">
+  <slot name="head" />
+
+  <QuietHero>
     <slot />
-  </section>
+  </QuietHero>
 </BaseLayout>

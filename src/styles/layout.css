@@ -1,54 +1,88 @@
 /* -------------------------------------------
-   URSIO CI v1.3 – Layout System
-   Container, Grid, Quiet-Spacing Architecture
+   URSIO Quiet Grid System – Modul 3
+   Harmonisierung aller Grid-Strukturen
 ------------------------------------------- */
 
-/* Hauptcontainer */
+/* -------------------------------------------
+   Quiet Grid Tokens
+------------------------------------------- */
+:root {
+  --grid-col-min: 260px;
+  --grid-col-min-wide: 320px;
+  --grid-gap: var(--space-md);
+  --grid-gap-lg: var(--space-lg);
+}
+
+/* Quiet Grid Utilities */
+.q-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-col-min), 1fr));
+  gap: var(--grid-gap);
+}
+
+.q-grid-wide {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-col-min-wide), 1fr));
+  gap: var(--grid-gap-lg);
+}
+
+/* -------------------------------------------
+   Layout Container
+------------------------------------------- */
+
 .container {
   width: 100%;
   max-width: var(--max-width-content);
   margin: 0 auto;
-  padding: var(--space-5) var(--space-4);
+  padding-inline: var(--space-md);
+  padding-block: var(--space-5);
 }
 
-/* Breiter Container für Bild/Text-Sektionen */
 .container-wide {
   width: 100%;
   max-width: var(--max-width-wide);
   margin: 0 auto;
-  padding: var(--space-6) var(--space-4);
+  padding-inline: var(--space-md);
+  padding-block: var(--space-6);
 }
 
-/* Zwei-Spalten-Layout (für Texte & Sparks) */
+/* -------------------------------------------
+   Harmonisiertes Zwei-Spalten-Layout
+------------------------------------------- */
+
 .two-column {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--grid-gap-lg);
 }
 
-@media (max-width: 800px) {
-  .two-column {
-    grid-template-columns: 1fr;
-  }
-}
+/* -------------------------------------------
+   Section Rhythm
+------------------------------------------- */
 
-/* Sanfter Section-Abstand nach URSIO Quiet System */
 section {
-  padding-top: var(--space-6);
-  padding-bottom: var(--space-6);
+  padding-block: var(--space-6);
 }
 
-/* Zentrierte Hero-Bereiche (Startseite & Landing Pages) */
+/* -------------------------------------------
+   Hero Layout
+------------------------------------------- */
+
 .hero {
   text-align: center;
-  padding: var(--space-7) var(--space-4);
+  padding-block: var(--space-7);
+  padding-inline: var(--space-lg);
   margin: 0 auto;
 }
 
-/* Kartenlayout (für Sparks, Artikel, Garten-Einträge) */
+/* -------------------------------------------
+   Karten & Raster
+------------------------------------------- */
+
 .card {
   background: var(--color-bg-soft);
-  padding: var(--space-5);
+  padding-inline: var(--space-md);
+  padding-block: var(--space-sm);
   border-radius: var(--radius-medium);
   box-shadow: var(--shadow-soft);
   transition: box-shadow var(--transition-quick);
@@ -58,26 +92,32 @@ section {
   box-shadow: var(--shadow-medium);
 }
 
-/* Listenraster für Sparks & Garten */
+/* Neues Quiet Grid für Listen */
 .grid-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-col-min), 1fr));
+  gap: var(--grid-gap-lg);
 }
 
-/* Footer Layout */
+/* -------------------------------------------
+   Footer Layout
+------------------------------------------- */
+
 .footer {
-  padding: var(--space-6) var(--space-4);
+  padding-inline: var(--space-md);
+  padding-block: var(--space-6);
   text-align: center;
   color: var(--color-ink-soft);
   font-size: var(--text-sm);
 }
 
-/* Navigation Alignment (QuietHeader) */
+/* -------------------------------------------
+   Navigation
+------------------------------------------- */
+
 .nav-row {
   display: flex;
   justify-content: center;
-  gap: var(--space-5);
-  padding: var(--space-4) 0;
+  gap: var(--space-md);
+  padding-block: var(--space-4);
 }
-

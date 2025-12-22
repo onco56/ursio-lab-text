@@ -1,30 +1,19 @@
 ---
-import ContentLayout from "../../layouts/ContentLayout.astro";
-
-// Platzhalter für die statische Über-Seite
+import PageLayout from "../../layouts/PageLayout.astro";
 ---
 
-<ContentLayout title="Über URSIO">
-  <fragment slot="head">
-    <title>URSIO – Über diesen Ort</title>
-    <meta name="description" content="Erfahre mehr über URSIO – einen ruhigen, klar strukturierten Ort für Texte, Wissen und Exploration." />
+<PageLayout title="Über URSIO">
+  <head slot="head">
+    <title>URSIO – Über</title>
+    <meta name="description" content="Über URSIO – ein ruhiger, klar strukturierter Ort für Texte und Wissen." />
     <link rel="canonical" href="https://ursio.ch/ueber/" />
-    <meta property="og:title" content="URSIO – Über diesen Ort" />
-    <meta property="og:description" content="Die Über-Seite von URSIO: Hintergrund, Struktur und Vision dieses ruhigen digitalen Ortes." />
+    <meta property="og:title" content="URSIO – Über" />
+    <meta property="og:description" content="Die Über-Seite von URSIO – ruhig, klar und übersichtlich." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ursio.ch/ueber/" />
-  </fragment>
+  </head>
 
-  <section class="about-page">
-
-    <header>
-      <h1>Über URSIO</h1>
-    </header>
-
-    <article>
-      <p>Dies ist die zukünftige Über-Seite.</p>
-    </article>
-
+  <section class="q-stack-lg">
+    <p>Dies ist die zukünftige Über-Seite.</p>
   </section>
-</ContentLayout>
-
+</PageLayout>

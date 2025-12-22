@@ -1,0 +1,19 @@
+---
+const { items = [] } = Astro.props;
+---
+
+<ul class="q-list">
+  {items.map(item => (
+    <li class="q-list-item q-hover-soft q-click q-keyfocus">
+      {item}
+    </li>
+  ))}
+</ul>
+
+<style>
+  .q-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+</style>

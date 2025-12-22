@@ -1,43 +1,56 @@
 ---
 import { getCollection } from "astro:content";
-import ContentLayout from "../../layouts/ContentLayout.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
 
 const entries = await getCollection("lp");
 ---
 
-<ContentLayout entry={{ data: { title: "Landingpages" } }}>
-  <fragment slot="head">
+<PageLayout title="Landingpages">
+  <head slot="head">
     <title>URSIO – Landingpages</title>
-    <meta
-      name="description"
-      content="Übersicht aller Landingpages auf URSIO – klar strukturierte Einstiegspunkte für Themen und Module."
-    />
-    <link rel="canonical" href="https://ursio.ch/lp/" />
     <meta property="og:title" content="URSIO – Landingpages" />
-    <meta
-      property="og:description"
-      content="Die Übersicht der Landingpages von URSIO – ruhige, klare strukturelle Einstiegspunkte."
-    />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ursio.ch/lp/" />
-  </fragment>
+  </head>
 
-  <section class="lp-overview">
-
-    <header>
-      <h1>Landingpages</h1>
-    </header>
-
-    <article>
+  <section class="lp-list">
+    {entries.length === 0 ? (
+      <p>Noch keine Landingpages vorhanden.</p>
+    ) : (
       <ul>
         {entries.map((entry) => (
           <li>
-            <a href={`/lp/${entry.slug}/`}>{entry.data.title}</a>
+            <a href={`/lp/${entry.slug}/`}>
+              {entry.data.title}
+            </a>
           </li>
         ))}
       </ul>
-    </article>
-
+    )}
   </section>
-</ContentLayout>
 
+  <style>
+    .lp-list {
+      max-width: 70ch;
+      margin: 0 auto;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: var(--space-md);
+    }
+
+    a {
+      color: var(--color-accent);
+      font-size: var(--text-lg);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--color-accent-soft);
+    }
+  </style>
+</PageLayout>

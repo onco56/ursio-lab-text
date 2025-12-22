@@ -1,41 +1,56 @@
 ---
 import { getCollection } from "astro:content";
-import ContentLayout from "../../layouts/ContentLayout.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
 
-const entries = await getCollection("tools");
+const tools = await getCollection("tools");
 ---
 
-<ContentLayout entry={{ data: { title: "Tools" } }}>
-  <fragment slot="head">
-    <title>URSIO – Tools</title>
-    <meta
-      name="description"
-      content="Übersicht über die Tools auf URSIO – kleine hilfreiche Module, klar strukturiert und ruhig präsentiert."
-    />
-    <link rel="canonical" href="https://ursio.ch/tools/" />
-    <meta property="og:title" content="URSIO – Tools" />
-    <meta
-      property="og:description"
-      content="Die Tools-Sammlung von URSIO – kompakte, ruhige und strukturierte Werkzeuge."
-    />
+<PageLayout title="Tools & Methoden">
+  <head slot="head">
+    <title>URSIO – Tools & Methoden</title>
+    <meta property="og:title" content="URSIO – Tools & Methoden" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ursio.ch/tools/" />
-  </fragment>
+  </head>
 
-  <section class="tools-overview">
-
-    <header>
-      <h1>Tools</h1>
-    </header>
-
-    <ul>
-      {entries.map((entry) => (
-        <li>
-          <a href={`/tools/${entry.slug}/`}>{entry.data.title}</a>
-        </li>
-      ))}
-    </ul>
-
+  <section class="tools-list">
+    {tools.length === 0 ? (
+      <p>Noch keine Tools vorhanden.</p>
+    ) : (
+      <ul>
+        {tools.map((entry) => (
+          <li>
+            <a href={`/tools/${entry.slug}/`}>
+              {entry.data.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
   </section>
-</ContentLayout>
 
+  <style>
+    .tools-list {
+      max-width: 70ch;
+      margin: 0 auto;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: var(--space-md);
+    }
+
+    a {
+      color: var(--color-accent);
+      font-size: var(--text-lg);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--color-accent-soft);
+    }
+  </style>
+</PageLayout>

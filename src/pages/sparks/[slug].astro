@@ -3,8 +3,8 @@ import { getCollection, getEntryBySlug } from "astro:content";
 import ContentLayout from "../../layouts/ContentLayout.astro";
 
 export async function getStaticPaths() {
-  const sparks = await getCollection("sparks");
-  return sparks.map((entry) => ({
+  const entries = await getCollection("sparks");
+  return entries.map((entry) => ({
     params: { slug: entry.slug },
   }));
 }
@@ -17,22 +17,12 @@ if (!entry) {
 }
 
 const { Content } = await entry.render();
-
-const description =
-  entry.data.description ??
-  `Ein Spark auf URSIO mit dem Titel: ${entry.data.title}.`;
 ---
 
-<ContentLayout title={entry.data.title} date={entry.data.date} intro={entry.data.intro}>
-  <fragment slot="head">
+<ContentLayout title={entry.data.title}>
+  <Fragment slot="head">
     <title>URSIO – {entry.data.title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={`https://ursio.ch/sparks/${slug}/`} />
-    <meta property="og:title" content={`URSIO – ${entry.data.title}`} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content={`https://ursio.ch/sparks/${slug}/`} />
-  </fragment>
+  </Fragment>
 
   <section class="spark-page">
     <article>

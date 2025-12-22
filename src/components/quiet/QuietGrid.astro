@@ -1,0 +1,45 @@
+---
+/*
+  QuietGrid.astro
+  – Universelles Grid-System basierend auf Quiet Grid Tokens
+  – Props:
+      cols: Anzahl der Spalten (default: auto-fit)
+      min: minimale Spaltenbreite (default: 260px)
+      gap: "xs" | "sm" | "md" | "lg" | "xl" (default: "md")
+
+  Beispiel:
+    <QuietGrid cols={3} min="200px" gap="lg">
+      <Card />
+      <Card />
+      <Card />
+    </QuietGrid>
+*/
+
+const {
+  cols = "auto-fit",
+  min = "260px",
+  gap = "md"
+} = Astro.props;
+---
+
+<div
+  class={`quiet-grid quiet-grid--${gap}`}
+  style={`--grid-template-columns: repeat(${cols}, minmax(${min}, 1fr));`}
+>
+  <slot />
+</div>
+
+<style>
+  .quiet-grid {
+    display: grid;
+    grid-template-columns: var(--grid-template-columns);
+    width: 100%;
+  }
+
+  /* Dynamische Gaps */
+  .quiet-grid--xs { gap: var(--space-xs); }
+  .quiet-grid--sm { gap: var(--space-sm); }
+  .quiet-grid--md { gap: var(--space-md); }
+  .quiet-grid--lg { gap: var(--space-lg); }
+  .quiet-grid--xl { gap: var(--space-xl); }
+</style>

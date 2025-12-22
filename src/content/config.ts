@@ -1,17 +1,25 @@
 import { defineCollection, z } from "astro:content";
 
 // -------------------------
-// TEXT-EINTRÄGE
+// TEXT-EINTRÄGE (stabilisiert für Seed-24)
 // -------------------------
 const texte = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    subtitle: z.string().optional(),
+
+    // optional, weil nicht in allen Seeds vorhanden:
+    slug: z.string().optional(),
     description: z.string().optional(),
+    subtitle: z.string().optional(),
+
+    // SEO / Struktur:
     date: z.string().optional(),
     tags: z.array(z.string()).optional(),
+
+    // Kompatibilität für verschiedene Seeds:
     draft: z.boolean().optional(),
+    published: z.boolean().optional(),
   }),
 });
 
@@ -68,6 +76,16 @@ const tools = defineCollection({
 });
 
 // -------------------------
+// STARTSEITE  (A1 – korrekt definiert)
+// -------------------------
+const startseite = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+  }),
+});
+
+// -------------------------
 // EXPORT
 // -------------------------
 export const collections = {
@@ -76,5 +94,5 @@ export const collections = {
   garten,
   lp,
   tools,
+  startseite,
 };
-

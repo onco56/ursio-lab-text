@@ -1,0 +1,24 @@
+/* -------------------------------------------
+   Quiet Atmospheres – Invisible Structural Layer
+   NOTE: These utilities do NOT apply visuals
+   unless explicitly used in later modules.
+------------------------------------------- */
+
+/* A. Quiet Mist – soft blur background */
+.q-mist {
+  backdrop-filter: blur(var(--atmo-mist-strength));
+}
+
+/* B. Quiet Fade – extremely subtle vertical fade */
+.q-fade {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, var(--atmo-fade-strength)) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* C. Quiet Focus – light focus overlay */
+.q-focus {
+  background: rgba(0, 0, 0, var(--atmo-focus-opacity));
+}

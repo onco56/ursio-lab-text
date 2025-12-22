@@ -1,0 +1,12 @@
+---
+import QuietSurface from "../QuietSurface.astro";
+import QuietStack from "../QuietStack.astro";
+
+const { padding = "lg", radius = "soft", level = "1" } = Astro.props;
+---
+
+<QuietSurface {level} {padding} {radius}>
+  <QuietStack space="md">
+    <slot />
+  </QuietStack>
+</QuietSurface>

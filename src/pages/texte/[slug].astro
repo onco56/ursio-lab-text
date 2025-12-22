@@ -3,8 +3,8 @@ import { getCollection, getEntryBySlug } from "astro:content";
 import ContentLayout from "../../layouts/ContentLayout.astro";
 
 export async function getStaticPaths() {
-  const texte = await getCollection("texte");
-  return texte.map((entry) => ({
+  const entries = await getCollection("texte");
+  return entries.map((entry) => ({
     params: { slug: entry.slug },
   }));
 }
@@ -17,26 +17,14 @@ if (!entry) {
 }
 
 const { Content } = await entry.render();
-
-const description =
-  entry.data.description ??
-  `Ein Text auf URSIO mit dem Titel: ${entry.data.title}.`;
 ---
 
-<ContentLayout title={entry.data.title} date={entry.data.date} intro={entry.data.intro}>
-  <fragment slot="head">
+<ContentLayout title={entry.data.title}>
+  <head slot="head">
     <title>URSIO – {entry.data.title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={`https://ursio.ch/texte/${slug}/`} />
     <meta property="og:title" content={`URSIO – ${entry.data.title}`} />
-    <meta property="og:description" content={description} />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content={`https://ursio.ch/texte/${slug}/`} />
-  </fragment>
+  </head>
 
-  <section class="text-page">
-    <article>
-      <Content />
-    </article>
-  </section>
+  <Content />
 </ContentLayout>

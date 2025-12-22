@@ -1,0 +1,26 @@
+---
+// QuietContainer.astro
+// Strukturkomponente für normierte Innenabstände & max-width-Logik
+
+const { variant = "default" } = Astro.props;
+
+const widthMap = {
+  default: "var(--max-width-content)",
+  narrow: "640px",
+  wide: "var(--max-width-wide)",
+};
+---
+
+<div class="quiet-container">
+  <slot />
+</div>
+
+<style>
+  .quiet-container {
+    width: 100%;
+    max-width: {widthMap[variant]};
+    margin-inline: auto;
+    padding-inline: var(--space-md);
+    padding-block: var(--space-lg);
+  }
+</style>

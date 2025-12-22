@@ -1,0 +1,10 @@
+---
+const { type = "button", children } = Astro.props;
+---
+
+<button
+  type={type}
+  class="q-hover q-press q-focus-ring"
+>
+  {children}
+</button>

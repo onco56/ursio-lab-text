@@ -1,0 +1,76 @@
+/* --------------------------------------------------------
+   Quiet Motion System – Variante B (Soft Motion)
+   URSIO Modul 7
+-------------------------------------------------------- */
+
+/* -------------------------------------------
+   HOVER MOTION UTILITIES
+------------------------------------------- */
+
+.q-hover-float {
+  transition:
+    transform var(--motion-medium) var(--ease-float),
+    box-shadow var--motion-medium) var(--ease-soft);
+}
+
+.q-hover-float:hover {
+  transform: translateY(calc(var(--float-translate) * -1))
+             scale(var(--float-scale));
+  box-shadow: var(--shadow-medium);
+}
+
+.q-hover-soft {
+  transition: transform var(--motion-medium) var(--ease-soft);
+}
+
+.q-hover-soft:hover {
+  transform: scale(var(--float-scale-sm));
+}
+
+.q-hover-glow {
+  transition: box-shadow var(--motion-medium) var(--ease-soft),
+              opacity var(--motion-medium) var(--ease-fade);
+}
+
+.q-hover-glow:hover {
+  opacity: 0.92;
+  box-shadow: var(--shadow-medium);
+}
+
+/* -------------------------------------------
+   SCROLL-IN MOTION UTILITIES
+------------------------------------------- */
+
+.q-scroll-soft {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity var(--motion-medium) var(--ease-fade),
+    transform var(--motion-medium) var(--ease-soft);
+}
+
+.q-scroll-rise {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity var(--motion-medium) var(--ease-fade),
+    transform var(--motion-medium) var(--ease-soft);
+}
+
+.q-scroll-soft.is-visible,
+.q-scroll-rise.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* -------------------------------------------
+   Safety: Reduced Motion
+------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}

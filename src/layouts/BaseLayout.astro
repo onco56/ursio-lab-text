@@ -19,10 +19,16 @@ import QuietFooter from "../components/QuietFooter.astro";
       @import "../styles/typography.css";
       @import "../styles/base.css";
       @import "../styles/layout.css";
+      @import "../styles/quiet-state.css";
+      @import "../styles/quiet-motion.css";
+      @import "../styles/quiet-interaction.css";
+      @import "../styles/quiet-depth.css";
     </style>
 
-    <!-- SEO & Custom Head Slot -->
     <slot name="head" />
+
+    <script src="/scripts/quiet-motion.js" defer></script>
+    <script src="/scripts/quiet-interaction.js" defer></script>
   </head>
 
   <body class="ursio-body">

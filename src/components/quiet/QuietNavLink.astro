@@ -1,0 +1,33 @@
+---
+const { href } = Astro.props;
+
+// Bestimme, ob der aktuelle Pfad aktiv ist
+const current = Astro.url.pathname;
+
+// Regelt die "aktive" Klasse:
+const isActive =
+  (href === "/" && current === "/") ||
+  (href !== "/" && current.startsWith(href));
+---
+
+<a
+  href={href}
+  class={`quiet-navlink q-hover-soft ${isActive ? "q-active" : ""}`}
+>
+  <slot />
+</a>
+
+<style>
+  .quiet-navlink {
+    padding-inline: var(--space-sm);
+    padding-block: var(--space-xs);
+    border-radius: var(--radius-soft);
+    transition: background var(--motion-medium) var(--ease-soft);
+  }
+
+  /* Aktiver Navigationspunkt */
+  .q-active {
+    background: var(--surface-active);
+    color: var(--color-ink);
+  }
+</style>

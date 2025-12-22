@@ -1,19 +1,30 @@
-<header>
-  <nav>
-    <a href="/">Startseite</a>
-    <a href="/texte/">Texte</a>
-    <a href="/garten/">Wissensgarten</a>
-    <a href="/sparks/">Sparks</a>
-    <a href="/ueber/">Über diesen Ort</a>
+---
+import QuietNavLink from "./quiet/QuietNavLink.astro";
+---
+
+<header class="quiet-header">
+  <nav class="quiet-nav">
+    <QuietNavLink href="/">Start</QuietNavLink>
+    <QuietNavLink href="/texte/">Texte</QuietNavLink>
+    <QuietNavLink href="/sparks/">Sparks</QuietNavLink>
+    <QuietNavLink href="/garten/">Wissensgarten</QuietNavLink>
+    <QuietNavLink href="/lp/">Landingpages</QuietNavLink>
+    <QuietNavLink href="/tools/">Tools</QuietNavLink>
+    <QuietNavLink href="/ueber/">Über</QuietNavLink>
   </nav>
+
+  <style>
+    .quiet-header {
+      width: 100%;
+      padding-block: var(--space-md);
+    }
+
+    .quiet-nav {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      font-family: var(--font-sans);
+      font-size: var(--ui-size);
+    }
+  </style>
 </header>
-
-<style>
-  /* Minimal – keine CI, nur technische Struktur */
-  nav a {
-    margin-right: 1rem;
-    text-decoration: none;
-    color: inherit;
-  }
-</style>
-

@@ -1,0 +1,80 @@
+/* --------------------------------------------------------
+   Quiet State System – URSIO Modul 12
+   Zustände ohne UI-Entscheidung, rein systemisch
+-------------------------------------------------------- */
+
+/* -------------------------------------------
+   HOVER STATES
+------------------------------------------- */
+
+.q-hover {
+  cursor: pointer;
+  transition:
+    background-color var(--transition-quick),
+    color var(--transition-quick),
+    border-color var(--transition-quick);
+}
+
+.q-hover:hover {
+  background-color: var(--state-hover);
+}
+
+/* -------------------------------------------
+   ACTIVE STATES
+------------------------------------------- */
+
+.q-active {
+  cursor: pointer;
+  transition:
+    background-color var(--transition-quick),
+    color var(--transition-quick),
+    border-color var(--transition-quick);
+}
+
+.q-active:active {
+  background-color: var(--state-active);
+}
+
+/* -------------------------------------------
+   SELECTED STATES
+------------------------------------------- */
+
+.q-selected {
+  background-color: var(--state-selected);
+}
+
+/* -------------------------------------------
+   MUTED / DISABLED STATES
+------------------------------------------- */
+
+.q-muted {
+  opacity: 0.6;
+  color: var(--state-muted);
+}
+
+.q-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  background-color: var(--state-disabled);
+}
+
+/* -------------------------------------------
+   FOCUS / ACCESSIBILITY
+------------------------------------------- */
+
+.q-focus-ring {
+  outline: 2px solid var(--state-focus-ring);
+  outline-offset: 2px;
+}
+
+/* -------------------------------------------
+   SURFACES (zustandsbasierte Oberflächen)
+------------------------------------------- */
+
+.q-surface-hover:hover {
+  background-color: var(--state-surface-hover);
+}
+
+.q-surface-active:active {
+  background-color: var(--state-surface-active);
+}

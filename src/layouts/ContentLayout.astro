@@ -1,21 +1,61 @@
-// ContentLayout.astro
+---
 import BaseLayout from "./BaseLayout.astro";
+import QuietSurface from "../components/quiet/QuietSurface.astro";
 
-const { title, date, intro } = Astro.props;
+const { title, intro } = Astro.props;
 ---
 
+<!--
+NOTE – URSIO (2025-01-…):
+QuietSurface wurde an dieser Stelle *temporär entfernt*,
+um die zuverlässige Sichtbarkeit von Markdown-Content sicherzustellen.
+
+Hintergrund: QuietSurface + QuietDepth erzeugten eine Überlagerung,
+bei der Markdown unsichtbar gerendert wurde.
+
+Ziel für später:
+- Wiedereinführung atmosphärischer Textzonen (Mist/Fade/Focus),
+- sanfte Oberflächen,
+- Scroll-Fokus,
+- leichte Elevation,
+- URSIO-Poetik im Lese-Flow.
+
+Dies ist eine reversible, bewusst konservative Entscheidung,
+um zuerst Stabilität und Klarheit der Website sicherzustellen.
+-->
+
 <BaseLayout>
-  <article class="content-container">
-    {title && <h1>{title}</h1>}
+  <!-- Head-Slot weiterreichen -->
+  <slot name="head" />
 
-    {intro && (
-      <p class="content-intro">{intro}</p>
-    )}
+  <!-- Hintergrund / Rahmen -->
+  <QuietSurface level="1" padding="xl" radius="soft">
+    <section class="content-layout">
+      {title && <h1 class="content-title">{title}</h1>}
+      {intro && <p class="content-intro">{intro}</p>}
 
-    {date && (
-      <p class="content-date">{date}</p>
-    )}
+      <!-- Markdown sichtbar -->
+      <article class="content-markdown">
+        <slot />
+      </article>
+    </section>
+  </QuietSurface>
 
-    <slot />
-  </article>
+  <style>
+    .content-layout {
+      max-width: 70ch;
+      margin: 0 auto;
+    }
+
+    .content-markdown {
+      position: relative;
+      isolation: isolate;
+
+      /* Sicherstellt sichtbaren Text */
+      color: var(--color-ink);
+
+      /* Hebt Content über QuietSurface */
+      z-index: 2;
+    }
+  </style>
 </BaseLayout>

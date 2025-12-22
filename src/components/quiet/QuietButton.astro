@@ -1,0 +1,14 @@
+---
+const { variant = "primary", href = null } = Astro.props;
+let classes = `q-btn q-focus-ring q-tap q-btn-${variant}`;
+---
+
+{href ? (
+  <a href={href} class={classes}>
+    <slot />
+  </a>
+) : (
+  <button class={classes}>
+    <slot />
+  </button>
+)}

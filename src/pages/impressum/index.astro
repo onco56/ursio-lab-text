@@ -1,9 +1,9 @@
 ---
-import ContentLayout from "../../layouts/ContentLayout.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
 ---
 
-<ContentLayout entry={{ data: { title: "Impressum" } }}>
-  <fragment slot="head">
+<PageLayout title="Impressum">
+  <head slot="head">
     <title>URSIO – Impressum</title>
     <meta
       name="description"
@@ -17,27 +17,13 @@ import ContentLayout from "../../layouts/ContentLayout.astro";
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ursio.ch/impressum/" />
-  </fragment>
+  </head>
 
-  <section class="impressum-page">
-
-    <header>
-      <h1>Impressum</h1>
-    </header>
+  <section class="impressum-page q-stack-lg">
+    <h1>Impressum</h1>
 
     <article>
       <p>Diese Seite dient als Platzhalter und wird später inhaltlich ergänzt.</p>
-
-      <h2>Verantwortlich für den Inhalt</h2>
-      <p>[Wird später ergänzt]</p>
-
-      <h2>Kontakt</h2>
-      <p>[Wird später ergänzt]</p>
-
-      <h2>Haftungsausschluss</h2>
-      <p>[Wird später ergänzt]</p>
     </article>
-
   </section>
-</ContentLayout>
-
+</PageLayout>

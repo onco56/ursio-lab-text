@@ -1,0 +1,16 @@
+---
+import QuietStack from "../QuietStack.astro";
+import QuietTitle from "../QuietTitle.astro";
+import QuietText from "../QuietText.astro";
+import QuietSurface from "../QuietSurface.astro";
+
+const { title, subtitle } = Astro.props;
+---
+
+<QuietSurface level="0" padding="xl" radius="soft">
+  <QuietStack space="md" class="q-fade q-scroll-soft">
+    {title && <QuietTitle level={1}>{title}</QuietTitle>}
+    {subtitle && <QuietText>{subtitle}</QuietText>}
+    <slot />
+  </QuietStack>
+</QuietSurface>

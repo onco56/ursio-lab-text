@@ -1,0 +1,19 @@
+---
+const {
+  level = "0",
+  padding = "md",
+  radius = "soft",
+  interactive = false
+} = Astro.props;
+
+const classes = [
+  `q-surface-${level}`,
+  `q-pad-${padding}`,
+  `q-radius-${radius}`,
+  interactive ? "q-interactive-surface q-click q-keyfocus" : ""
+].join(" ");
+---
+
+<div class={classes}>
+  <slot />
+</div>

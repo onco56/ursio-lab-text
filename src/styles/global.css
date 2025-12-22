@@ -21,3 +21,33 @@
   --ui-size: 16px;
   --ui-line: 1.4;
 }
+
+/* -------------------------------------------
+   Atmosphären – Modul 6 Teil 6
+   Ultra-subtile Effekte (1–3%)
+------------------------------------------- */
+
+/* q-focus – leichte Klarheit, micro-depth */
+.q-focus {
+  filter: contrast(1.02) brightness(1.01);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+/* q-fade – sanfte Abdämpfung, weiche Übergänge */
+.q-fade {
+  opacity: 0.97;
+  filter: blur(0.2px);
+}
+
+/* q-mist – atmosphärischer Hintergrundnebel */
+.q-mist {
+  opacity: 0.94;
+  filter: blur(0.6px) brightness(1.03);
+}
+
+/* Sanfte Übergänge für alle Atmosphären */
+.q-focus,
+.q-fade,
+.q-mist {
+  transition: all 240ms ease;
+}

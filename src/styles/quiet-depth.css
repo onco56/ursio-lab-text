@@ -1,0 +1,72 @@
+/* --------------------------------------------------------
+   Quiet Depth System – Modul 9
+   Einheitliche Tiefen- und Ebenenlogik für URSIO
+-------------------------------------------------------- */
+
+/* -------------------------------------------
+   SURFACE LEVELS
+------------------------------------------- */
+
+.q-surface-0 {
+  background: var(--surface-0);
+  box-shadow: var(--depth-0);
+}
+
+.q-surface-1 {
+  background: var(--surface-1);
+  box-shadow: var(--depth-1);
+}
+
+.q-surface-2 {
+  background: var(--surface-2);
+  box-shadow: var(--depth-2);
+}
+
+.q-surface-3 {
+  background: var(--surface-3);
+  box-shadow: var(--depth-3);
+}
+
+/* -------------------------------------------
+   ELEVATION LEVELS (ALTERNATIVE SYNTAX)
+------------------------------------------- */
+
+.q-depth-0 {
+  box-shadow: var(--depth-0);
+}
+
+.q-depth-1 {
+  box-shadow: var(--depth-1);
+}
+
+.q-depth-2 {
+  box-shadow: var(--depth-2);
+}
+
+.q-depth-3 {
+  box-shadow: var(--depth-3);
+}
+
+/* -------------------------------------------
+   SURFACE + PADDING UTILITIES
+------------------------------------------- */
+
+.q-surface-block {
+  padding-block: var(--space-lg);
+}
+
+.q-surface-inline {
+  padding-inline: var(--space-md);
+}
+
+/* -------------------------------------------
+   SURFACE RADIUS UTILITIES
+------------------------------------------- */
+
+.q-radius-soft {
+  border-radius: var(--radius-soft);
+}
+
+.q-radius-medium {
+  border-radius: var(--radius-medium);
+}

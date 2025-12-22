@@ -1,18 +1,14 @@
-<div class="card">
-  <h3>{Astro.props.title}</h3>
-  <p>{Astro.props.text}</p>
-</div>
+---
+const { title, text } = Astro.props;
+import QuietCard from "../../components/quiet/QuietCard.astro";
+import QuietStack from "../../components/quiet/QuietStack.astro";
+import QuietTitle from "../../components/quiet/QuietTitle.astro";
+import QuietText from "../../components/quiet/QuietText.astro";
+---
 
-<style>
-  .card {
-    padding: var(--space-3);
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-
-  h3 {
-    margin-top: 0;
-    margin-bottom: var(--space-2);
-  }
-</style>
-
+<QuietCard>
+  <QuietStack space="xs">
+    <QuietTitle level={3}>{title}</QuietTitle>
+    <QuietText>{text}</QuietText>
+  </QuietStack>
+</QuietCard>

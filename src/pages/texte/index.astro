@@ -1,37 +1,59 @@
 ---
+import PageLayout from "../../layouts/PageLayout.astro";
 import { getCollection } from "astro:content";
-import TextLayout from "../../layouts/TextLayout.astro";
 
-const entries = await getCollection("texte");
+// Texte laden & nach Datum sortieren (fallback: alphabetisch)
+const entries = (await getCollection("texte"))
+  .sort((a, b) => {
+    const da = a.data.date ?? "1900-01-01";
+    const db = b.data.date ?? "1900-01-01";
+    return db.localeCompare(da);
+  });
 ---
 
-<TextLayout title="Texte">
-  <fragment slot="head">
-    <title>URSIO – Texte</title>
-    <meta name="description" content="Übersicht aller Texte auf URSIO – ein ruhiger Ort für strukturierte Gedanken, Wissen und Exploration." />
-    <link rel="canonical" href="https://ursio.ch/texte/" />
-    <meta property="og:title" content="URSIO – Texte" />
-    <meta property="og:description" content="Die Textsammlung von URSIO – klar, ruhig, strukturiert." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ursio.ch/texte/" />
-  </fragment>
+<!-- HEAD -->
+<Fragment slot="head">
+  <title>Texte – URSIO</title>
+  <meta name="description" content="Alle Texte von URSIO – geordnet, zugänglich, offen für Orientierung." />
+</Fragment>
 
-  <section class="text-overview">
+<!-- PAGE -->
+<PageLayout title="Texte">
+  <section class="texte-index">
+    {entries.length === 0 && (
+      <p>Noch keine Texte vorhanden.</p>
+    )}
 
-    <header>
-      <h1>Texte</h1>
-    </header>
-
-    <article>
-      <ul>
-        {entries.map((entry) => (
-          <li>
-            <a href={`/texte/${entry.slug}/`}>{entry.data.title}</a>
-          </li>
-        ))}
-      </ul>
-    </article>
-
+    <ul>
+      {entries.map((entry) => (
+        <li>
+          <a href={`/texte/${entry.slug}/`}>
+            {entry.data.title ?? entry.slug}
+          </a>
+        </li>
+      ))}
+    </ul>
   </section>
-</TextLayout>
 
+  <style>
+    .texte-index {
+      max-width: 70ch;
+      margin: 0 auto;
+      padding-block: var(--space-lg);
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin-block: var(--space-sm);
+    }
+    a {
+      text-decoration: none;
+      color: var(--color-ink);
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</PageLayout>

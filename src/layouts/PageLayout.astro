@@ -1,10 +1,20 @@
 ---
-// PageLayout.astro
 import BaseLayout from "./BaseLayout.astro";
+import QuietSurface from "../components/quiet/QuietSurface.astro";
 ---
 
 <BaseLayout>
-  <section class="page-container">
-    <slot />
-  </section>
+  <slot name="head" />
+
+  <QuietSurface level="1" padding="lg" radius="soft">
+    <section class="page-container">
+      <slot />
+    </section>
+  </QuietSurface>
+
+  <style>
+    .page-container {
+      padding-block: var(--space-lg);
+    }
+  </style>
 </BaseLayout>

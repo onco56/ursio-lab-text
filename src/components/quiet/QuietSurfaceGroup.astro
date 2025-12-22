@@ -1,0 +1,47 @@
+---
+// QuietSurfaceGroup.astro
+// Dient zur Gruppierung mehrerer QuietSurface/QuietCard Container
+// Props:
+//  - space: "sm" | "md" | "lg" | "xl"
+//  - align: "start" | "center" | "end" | "stretch"
+
+const {
+  space = "md",
+  align = "stretch"
+} = Astro.props;
+
+// Spacing mapping
+let stackSpace = "q-stack-md";
+if (space === "sm") stackSpace = "q-stack-sm";
+if (space === "lg") stackSpace = "q-stack-lg";
+if (space === "xl") stackSpace = "q-stack-xl";
+
+// Alignment mapping
+let alignClass = "q-align-stretch";
+if (align === "start") alignClass = "q-align-start";
+if (align === "center") alignClass = "q-align-center";
+if (align === "end") alignClass = "q-align-end";
+---
+
+<div class={`q-surface-group ${stackSpace} ${alignClass}`}>
+  <slot />
+</div>
+
+<style>
+  .q-surface-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Vertical spacing tokens */
+  .q-stack-sm > * + * { margin-top: var(--space-sm); }
+  .q-stack-md > * + * { margin-top: var(--space-md); }
+  .q-stack-lg > * + * { margin-top: var(--space-lg); }
+  .q-stack-xl > * + * { margin-top: var(--space-xl); }
+
+  /* Alignment utilities */
+  .q-align-start   { align-items: flex-start; }
+  .q-align-center  { align-items: center; }
+  .q-align-end     { align-items: flex-end; }
+  .q-align-stretch { align-items: stretch; }
+</style>

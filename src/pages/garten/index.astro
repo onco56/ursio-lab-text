@@ -1,43 +1,56 @@
 ---
 import { getCollection } from "astro:content";
-import GardenLayout from "../../layouts/GardenLayout.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
 
 const entries = await getCollection("garten");
 ---
 
-<GardenLayout title="Wissensgarten">
-  <fragment slot="head">
+<PageLayout title="Wissensgarten">
+  <head slot="head">
     <title>URSIO – Wissensgarten</title>
-    <meta
-      name="description"
-      content="Der Wissensgarten von URSIO – ein ruhiger Ort, an dem Inhalte gepflegt, geordnet und entdeckt werden können."
-    />
-    <link rel="canonical" href="https://ursio.ch/wissensgarten/" />
     <meta property="og:title" content="URSIO – Wissensgarten" />
-    <meta
-      property="og:description"
-      content="Ein strukturierter, ruhiger Ort voller Wissen – der Wissensgarten von URSIO."
-    />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ursio.ch/wissensgarten/" />
-  </fragment>
+  </head>
 
-  <section class="garden-overview">
-
-    <header>
-      <h1>Wissensgarten</h1>
-    </header>
-
-    <article>
+  <section class="garten-list">
+    {entries.length === 0 ? (
+      <p>Noch keine Einträge im Wissensgarten vorhanden.</p>
+    ) : (
       <ul>
         {entries.map((entry) => (
           <li>
-            <a href={`/wissensgarten/${entry.slug}/`}>{entry.data.title}</a>
+            <a href={`/garten/${entry.slug}/`}>
+              {entry.data.title}
+            </a>
           </li>
         ))}
       </ul>
-    </article>
-
+    )}
   </section>
-</GardenLayout>
 
+  <style>
+    .garten-list {
+      max-width: 70ch;
+      margin: 0 auto;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: var(--space-md);
+    }
+
+    a {
+      color: var(--color-accent);
+      font-size: var(--text-lg);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--color-accent-soft);
+    }
+  </style>
+</PageLayout>

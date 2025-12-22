@@ -3,8 +3,8 @@ import { getCollection, getEntryBySlug } from "astro:content";
 import ContentLayout from "../../layouts/ContentLayout.astro";
 
 export async function getStaticPaths() {
-  const tools = await getCollection("tools");
-  return tools.map((entry) => ({
+  const entries = await getCollection("tools");
+  return entries.map((entry) => ({
     params: { slug: entry.slug },
   }));
 }
@@ -17,33 +17,16 @@ if (!entry) {
 }
 
 const { Content } = await entry.render();
-
-// Fallback-Beschreibung
-const description =
-  entry.data.description ??
-  `Ein Tool auf URSIO mit dem Titel: ${entry.data.title}.`;
 ---
 
-<ContentLayout entry={{ data: { title: entry.data.title } }}>
-  <fragment slot="head">
+<ContentLayout title={entry.data.title}>
+  <Fragment slot="head">
     <title>URSIO – {entry.data.title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={`https://ursio.ch/tools/${slug}/`} />
-    <meta property="og:title" content={`URSIO – ${entry.data.title}`} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content={`https://ursio.ch/tools/${slug}/`} />
-  </fragment>
+  </Fragment>
 
   <section class="tool-page">
-
-    <header>
-      <h1>{entry.data.title}</h1>
-    </header>
-
     <article>
       <Content />
     </article>
-
   </section>
 </ContentLayout>

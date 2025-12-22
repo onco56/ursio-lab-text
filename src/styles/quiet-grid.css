@@ -1,0 +1,184 @@
+/* -------------------------------------------------------
+   URSIO Quiet Grid Utilities – Modul 3
+   Harmonisierung von Layout, Rhythmus und Grid-Struktur
+   Version: 1.0
+------------------------------------------------------- */
+
+/* -------------------------------------------------------
+   1) Quiet Stack (Block Flow)
+   Standard-Vertikalstruktur für Texte, Sections, Artikel
+------------------------------------------------------- */
+
+.q-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.q-stack-sm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.q-stack-lg {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+
+/* -------------------------------------------------------
+   2) Quiet Inline Grid
+   Für zweispaltige und mehrspaltige Layouts
+------------------------------------------------------- */
+
+.q-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.q-grid-sm {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.q-grid-lg {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+/* Responsive Autogrid */
+.q-grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-lg);
+}
+
+
+/* -------------------------------------------------------
+   3) Quiet Columns
+------------------------------------------------------- */
+
+.q-cols-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+@media (max-width: 800px) {
+  .q-cols-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.q-cols-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+@media (max-width: 900px) {
+  .q-cols-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* -------------------------------------------------------
+   4) Quiet Layout Containers
+------------------------------------------------------- */
+
+.q-container {
+  width: 100%;
+  max-width: var(--max-width-content);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+.q-container-wide {
+  width: 100%;
+  max-width: var(--max-width-wide);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+
+/* -------------------------------------------------------
+   5) Quiet Section Rhythm
+   Keine visuellen Effekte — nur Rhythmusvereinheitlichung
+------------------------------------------------------- */
+
+.q-section {
+  padding-block: var(--space-xl);
+}
+
+.q-section-md {
+  padding-block: var(--space-lg);
+}
+
+.q-section-sm {
+  padding-block: var(--space-md);
+}
+
+
+/* -------------------------------------------------------
+   6) Quiet Card Layout
+   Rhythmisch sauber, CI-neutral
+------------------------------------------------------- */
+
+.q-card {
+  background: var(--color-bg-soft);
+  padding-inline: var(--space-md);
+  padding-block: var(--space-md);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-soft);
+}
+
+.q-card-sm {
+  padding-inline: var(--space-sm);
+  padding-block: var(--space-sm);
+}
+
+.q-card-lg {
+  padding-inline: var(--space-lg);
+  padding-block: var(--space-lg);
+}
+
+
+/* -------------------------------------------------------
+   7) Quiet List Utilities
+------------------------------------------------------- */
+
+.q-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.q-list-lg {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+
+/* -------------------------------------------------------
+   8) Quiet Hero Alignment
+------------------------------------------------------- */
+
+.q-hero {
+  text-align: center;
+  padding-block: var(--space-xl);
+  padding-inline: var(--space-lg);
+  margin-inline: auto;
+}
+
+
+/* -------------------------------------------------------
+   9) Quiet Flow Controls
+------------------------------------------------------- */
+
+.q-flow > * + * {
+  margin-top: var(--space-md);
+}

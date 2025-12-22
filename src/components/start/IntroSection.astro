@@ -1,11 +1,11 @@
-<section class="intro">
-  <h1>{Astro.props.title}</h1>
-  <p>{Astro.props.text}</p>
-</section>
+---
+const { title, text } = Astro.props;
+import QuietStack from "../../components/quiet/QuietStack.astro";
+import QuietTitle from "../../components/quiet/QuietTitle.astro";
+import QuietText from "../../components/quiet/QuietText.astro";
+---
 
-<style>
-  .intro {
-    margin-bottom: var(--space-5);
-  }
-</style>
-
+<QuietStack space="md" class="q-fade">
+  <QuietTitle level={1}>{title}</QuietTitle>
+  <QuietText>{text}</QuietText>
+</QuietStack>

@@ -1,78 +1,27 @@
 ---
 import LandingPageLayout from "../layouts/LandingPageLayout.astro";
+import { getEntry } from "astro:content";
 
-import StartPageSectionWrapper from "../components/start/StartPageSectionWrapper.astro";
-import IntroSection from "../components/start/IntroSection.astro";
-import NeutralSection from "../components/start/NeutralSection.astro";
-import TwoColumnSection from "../components/start/TwoColumnSection.astro";
-import FeatureSection from "../components/start/FeatureSection.astro";
-import FeatureCard from "../components/start/FeatureCard.astro";
-import CallToActionSection from "../components/start/CallToActionSection.astro";
-import CTAButton from "../components/start/CTAButton.astro";
+const entry = await getEntry("startseite", "start");
+const { data } = entry;
+
+// korrekt: Content via render()
+const { Content } = await entry.render();
 ---
 
-<LandingPageLayout title="URSIO – Startseite">
-  <fragment slot="head">
-    <title>URSIO – Startseite</title>
-    <meta name="description" content="URSIO – ein ruhiger, modularer und klar strukturierter Ort für Texte, Wissen und Exploration." />
-    <link rel="canonical" href="https://ursio.ch/" />
-    <meta property="og:title" content="URSIO – Startseite" />
-    <meta property="og:description" content="Ein ruhiger und modularer Startpunkt für das URSIO-Wissenshaus. Klar, schlicht, strukturiert." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ursio.ch/" />
-  </fragment>
+<LandingPageLayout title={data.title}>
+  <article class="landing-md">
+    <Content />
+  </article>
 
-  <section class="startpage">
-
-    <header>
-      <h1>Willkommen bei URSIO</h1>
-    </header>
-
-    <article>
-
-      <StartPageSectionWrapper>
-        <IntroSection
-          title="Willkommen bei URSIO"
-          text="Eine neutrale, modulare Basis – bereit für den weiteren Aufbau."
-        />
-      </StartPageSectionWrapper>
-
-      <StartPageSectionWrapper>
-        <NeutralSection>
-          <h2>Was diese Seite jetzt bereits kann</h2>
-          <ul>
-            <li>Saubere Layout-Struktur</li>
-            <li>Modulare Startseiten-Architektur</li>
-            <li>Minimaler Code, vollständig CI-frei</li>
-            <li>Stabile Navigation und Fehlerseiten</li>
-          </ul>
-        </NeutralSection>
-      </StartPageSectionWrapper>
-
-      <StartPageSectionWrapper>
-        <TwoColumnSection>
-          <div slot="left">
-            <p>Linke Spalte mit neutralem Beispieltext.</p>
-          </div>
-
-          <div slot="right">
-            <p>Rechte Spalte – ebenfalls frei befüllbar.</p>
-          </div>
-        </TwoColumnSection>
-      </StartPageSectionWrapper>
-
-      <StartPageSectionWrapper>
-        <CallToActionSection
-          title="Bereit für den nächsten Schritt?"
-          text="Diese neutrale Version ist startklar für Struktur, Content und spätere Erweiterungen."
-        >
-          <CTAButton href="/kontakt/" label="Kontakt aufnehmen" />
-          <CTAButton href="/ueber/" label="Mehr erfahren" />
-        </CallToActionSection>
-      </StartPageSectionWrapper>
-        
-    </article>
-            
-  </section>
-
+  <style>
+    .landing-md {
+      position: relative;
+      isolation: isolate;
+      color: var(--color-ink);
+      max-width: 70ch;
+      margin: 0 auto;
+      padding-block: var(--space-lg);
+    }
+  </style>
 </LandingPageLayout>

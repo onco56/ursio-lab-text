@@ -1,22 +1,14 @@
-<section class="two-column">
-  <div class="col left">
+---
+import QuietGrid from "../../components/quiet/QuietGrid.astro";
+import QuietStack from "../../components/quiet/QuietStack.astro";
+---
+
+<QuietGrid cols="2">
+  <QuietStack space="md">
     <slot name="left" />
-  </div>
+  </QuietStack>
 
-  <div class="col right">
+  <QuietStack space="md">
     <slot name="right" />
-  </div>
-</section>
-
-<style>
-  .two-column {
-    display: flex;
-    gap: var(--space-4);
-    margin-bottom: var(--space-5);
-  }
-
-  .col {
-    flex: 1;
-  }
-</style>
-
+  </QuietStack>
+</QuietGrid>
