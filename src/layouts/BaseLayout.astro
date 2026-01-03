@@ -2,27 +2,15 @@
 const { title } = Astro.props;
 import QuietHeader from "../components/QuietHeader.astro";
 import QuietFooter from "../components/QuietFooter.astro";
-
-/* URSIO – global noindex for lab sites (env-gesteuert) */
-const noindex = import.meta.env.PUBLIC_URSIO_NOINDEX === 'true';
 ---
 
 <!DOCTYPE html>
-
 <html lang="de">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     {title && <title>{title}</title>}
-
-{noindex && (
-  <>
-    <meta name="robots" content="noindex, nofollow, noarchive" />
-    <meta name="googlebot" content="noindex, nofollow, noarchive" />
-  </>
-)}
-
 
     <!-- URSIO Global Styles -->
     <style is:global>
